@@ -1,9 +1,11 @@
 import 'dart:math';
 
+import 'package:cards_buddy/deck/suite.dart';
+
 import 'card.dart';
 
 class Deck {
-  final Random randomizer = Random.secure();
+  final Random _randomizer = Random.secure();
   final List<Card> _cards;
 
   Deck(List<Card> cards)
@@ -14,9 +16,14 @@ class Deck {
   Deck shuffle() {
     final shuffledCards = [...cards];
     for(var i = 0; i < cards.length; i++) {
-      final index = randomizer.nextInt(cards.length);
+      final index = _randomizer.nextInt(cards.length);
       shuffledCards[i] = cards[index];
     }
     return Deck(shuffledCards);
+  }
+
+  Deck removeJokers() {
+    final filteredCards = cards.where((c) => c.suite != Suite.Joker);
+    return Deck(filteredCards);
   }
 }

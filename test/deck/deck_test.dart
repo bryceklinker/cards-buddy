@@ -34,6 +34,14 @@ void main() {
 
     assertCardsAreNotInTheSameOrder(shuffledDeck, deck);
   });
+
+  test('When jokers are removed from deck then 52 cards are left', () {
+    final deck = DeckFactory.createStandardDeck();
+
+    final jokerlessDeck = deck.removeJokers();
+
+    expect(jokerlessDeck.cards.length, 52);
+  });
 }
 
 void assertHasCardsInSuite(Deck deck, Suite suite, num cardCount) {
@@ -51,5 +59,7 @@ void assertCardsAreNotInTheSameOrder(Deck shuffled, Deck original) {
     }
   }
 
-  expect(matchingCards, lessThanOrEqualTo(MAX_ACCEPTABLE_MATCHING_IN_SHUFFLED_DECK));
+  expect(matchingCards,
+      lessThanOrEqualTo(MAX_ACCEPTABLE_MATCHING_IN_SHUFFLED_DECK)
+  );
 }
