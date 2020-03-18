@@ -1,0 +1,29 @@
+name: Main
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  continuous_integration:
+    runs-on: macos-10.15
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.12.13+hotfix.8'
+
+      - name: Install Mobile Dependencies
+        run: flutter pub get
+
+      - name: Run Unit Tests
+        run: flutter test
+
+      - name: Build Mobile App
+        run: flutter build
