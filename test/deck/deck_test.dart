@@ -9,7 +9,7 @@ void main() {
   test('When standard deck is created then there should be 54 cards', () {
     final deck = DeckFactory.createStandardDeck();
 
-    expect(deck.cards.length, 54);
+    expect(deck.numberOfCards, 54);
   });
 
   test('When standard deck is created then 13 of each suite', () {
@@ -40,7 +40,7 @@ void main() {
 
     final jokerlessDeck = deck.removeJokers();
 
-    expect(jokerlessDeck.cards.length, 52);
+    expect(jokerlessDeck.numberOfCards, 52);
   });
 }
 
@@ -50,10 +50,10 @@ void assertHasCardsInSuite(Deck deck, Suite suite, num cardCount) {
 }
 
 void assertCardsAreNotInTheSameOrder(Deck shuffled, Deck original) {
-  expect(shuffled.cards.length, original.cards.length);
+  expect(shuffled.numberOfCards, original.numberOfCards);
 
   var matchingCards = 0;
-  for(var i = 0; i < original.cards.length; i++) {
+  for(var i = 0; i < original.numberOfCards; i++) {
     if (shuffled.cards[i] == original.cards[i]) {
       matchingCards++;
     }

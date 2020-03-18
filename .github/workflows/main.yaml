@@ -28,5 +28,14 @@ jobs:
       - name: Run Unit Tests
         run: flutter test
 
+      - name: Start iOS Simulator
+        run: open -a Simulator
+
+      - name: Run Acceptance Tests
+        run: flutter drive --target=test_driver/app.dart
+
       - name: Build Mobile App
         run: flutter build
+
+      - name: Stop iOS Simulator
+        run: killall -9 Simulator

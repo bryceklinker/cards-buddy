@@ -13,10 +13,12 @@ class Deck {
 
   List<Card> get cards => _cards;
 
+  get numberOfCards => cards.length;
+
   Deck shuffle() {
     final shuffledCards = [...cards];
-    for(var i = 0; i < cards.length; i++) {
-      final index = _randomizer.nextInt(cards.length);
+    for(var i = 0; i < numberOfCards; i++) {
+      final index = _randomizer.nextInt(numberOfCards);
       shuffledCards[i] = cards[index];
     }
     return Deck(shuffledCards);
@@ -24,6 +26,6 @@ class Deck {
 
   Deck removeJokers() {
     final filteredCards = cards.where((c) => c.suite != Suite.Joker);
-    return Deck(filteredCards);
+    return Deck(filteredCards.toList());
   }
 }
