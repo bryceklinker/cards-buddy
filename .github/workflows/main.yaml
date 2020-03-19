@@ -25,6 +25,12 @@ jobs:
       - name: Install Mobile Dependencies
         run: flutter pub get
 
+      - name: Switch XCode
+        run: xcode-select --switch /Applications/Xcode.app/Contents/Developer
+
+      - name: XCode Licensing
+        run: xcodebuild -license
+
       - name: Run Unit Tests
         run: flutter test
 
