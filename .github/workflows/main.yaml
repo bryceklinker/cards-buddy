@@ -26,10 +26,10 @@ jobs:
         run: flutter pub get
 
       - name: Switch XCode
-        run: xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        run: sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 
       - name: XCode Licensing
-        run: xcodebuild -license
+        run: sudo xcodebuild -license
 
       - name: Run Unit Tests
         run: flutter test
