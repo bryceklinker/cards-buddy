@@ -8,7 +8,7 @@ jobs:
   continuous_integration:
     runs-on: macos-10.15
     env:
-      IOS_DEVICE: 'iPhone 11 Pro Max (13.1)'
+      IOS_DEVICE: 'iPhone 11 (13.3)'
     steps:
       - uses: actions/checkout@v1
         name: Clone
